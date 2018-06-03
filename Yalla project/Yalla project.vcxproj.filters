@@ -20,8 +20,11 @@
     </MASM>
   </ItemGroup>
   <ItemGroup>
+    <None Include="main_funcs.inc">
+      <Filter>Header Files</Filter>
+    </None>
     <None Include="data.inc">
-      <Filter>Resource Files</Filter>
+      <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
 </Project>
