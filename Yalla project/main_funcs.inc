@@ -12,4 +12,10 @@ invoke drd_imageSetTransparent, offset dinod.info, 0ffffffh
 invoke PlaySound,offset score,NULL,SND_ASYNC
 ret
 init endp
+draw proc
+invoke drd_pixelsClear ,0
+invoke drd_imageDraw,offset dinod.info, dinod.pos.x, dinod.pos.y
+invoke drd_flip
+ret
+draw endp
 

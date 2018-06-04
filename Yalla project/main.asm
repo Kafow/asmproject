@@ -11,9 +11,7 @@ includelib \masm32\lib\winmm.lib
 main proc
 invoke init
 loopa:
-invoke drd_pixelsClear ,0
-invoke drd_imageDraw,offset dinod.info, dinod.pos.x, dinod.pos.y
-invoke drd_flip
+invoke draw
 invoke drd_processMessages
 jmp loopa
 ret
