@@ -18,4 +18,7 @@ invoke drd_imageDraw,offset dinod.info, dinod.pos.x, dinod.pos.y
 invoke drd_flip
 ret
 draw endp
-
+update proc
+invoke drd_processMessages
+ret
+update endp
