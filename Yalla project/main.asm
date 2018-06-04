@@ -10,9 +10,11 @@ includelib \masm32\lib\winmm.lib
 
 main proc
 invoke init
+
 loopa:
-invoke draw
+invoke Sleep, 5
 invoke update
+invoke draw
 jmp loopa
 ret
 main endp
