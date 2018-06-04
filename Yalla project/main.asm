@@ -12,7 +12,7 @@ main proc
 invoke init
 loopa:
 invoke draw
-invoke drd_processMessages
+invoke update
 jmp loopa
 ret
 main endp
