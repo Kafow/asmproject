@@ -1,6 +1,7 @@
 ;drd funcs
 include drd.inc
 includelib drd.lib
+include funcs.inc
 
 
 ;sound 
@@ -12,7 +13,7 @@ invoke drd_init,1200,800,0
 invoke drd_imageLoadFile,offset dino, offset res.dino
 invoke drd_imageLoadFile,offset background, offset res.background
 invoke drd_imageSetTransparent, offset res.dino, 0ffffffh
-invoke PlaySound,offset score,NULL,SND_ASYNC
+
 ret
 init endp
 draw proc
@@ -28,9 +29,12 @@ update proc
 inc x
 dec w
 cmp x,1200
+
 je do_again
 returnoush:
+
 invoke drd_processMessages
+
 ret
 do_again:
 mov x,0

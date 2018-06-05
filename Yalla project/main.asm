@@ -7,14 +7,18 @@ include main_funcs.inc
 include \masm32\include\winmm.inc
 includelib \masm32\lib\winmm.lib 
 .code
-
+ ; TODO: finish jump, add cactus, maybe add score, replace sleep with count
 main proc
 invoke init
+
+
+
 
 loopa:
 invoke Sleep, 5
 invoke update
 invoke draw
+invoke jump, offset dinod 
 jmp loopa
 ret
 main endp
