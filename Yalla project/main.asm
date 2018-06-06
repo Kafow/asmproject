@@ -18,7 +18,7 @@ loopa:
 invoke Sleep, 5
 invoke update
 invoke draw
-invoke jump, offset dinod 
+
 jmp loopa
 ret
 main endp

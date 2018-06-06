@@ -3,26 +3,46 @@ include \masm32\include\masm32rt.inc
 include \masm32\include\winmm.inc
 includelib \masm32\lib\winmm.lib 
 .code
-Key_pressed proc KeyOfst:DWORD
-mov ebx, eax
-add ebx, KeyOfst
-
-invoke GetAsyncKeyState,[ebx] ;throw to eax if sapce is pressed (value won't be zero)
-ret
-Key_pressed endp
-jump proc adrObj:DWORD
-mov eax, adrObj
-mov edi, adrObj
-invoke Key_pressed, SPACE_OFST
-cmp eax,0
-jne doJump
-ret
-doJump:
+stop proc
+	mov ebx, offset dinod
+	pusha
+	xor eax,eax
 	
-	mov ecx,JUMPING
-	mov [edi+isJump_adr], ecx
-	mov eax, [edi+JUMP_POWER]
-	invoke PlaySound,offset jump_sound,NULL,SND_ASYNC
+	mov [ebx+DRCY],eax
+	popa
+
+ret
+stop endp
+
+Key_pressed_space proc KeyOfst:DWORD
+mov ebx, edi
+add ebx, KeyOfst
+invoke GetAsyncKeyState,[ebx] ;throw to eax 1 if key pressed
+cmp eax, 0
+jne jumpfunc
+ret
+jumpfunc:
+mov ecx,JUMPING
+mov [edi+isJump_adr], ecx
+
+ret
+Key_pressed_space endp
+
+jump proc adrObj:DWORD
+
+mov edi, adrObj
+	mov ecx, JUMPING
+	cmp [edi+isJump_adr],ecx 
+	jne dontjump
+	mov eax, [edi+JUMP_LVL_OFST]
+	sub [edi + DINO_Y_OFST], eax ; jump up mf
+	mov eax,1; drop down mf
+	sub [edi+JUMP_LVL_OFST], eax
+	
+invoke PlaySound,offset jump_sound,NULL,SND_ASYNC
+dontjump:
+	
+	
 
 ret
 jump endp

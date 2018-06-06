@@ -32,6 +32,9 @@ cmp x,1200
 
 je do_again
 returnoush:
+invoke stop 
+invoke Key_pressed_space, SPACE_OFST
+invoke jump, offset dinod 
 
 invoke drd_processMessages
 

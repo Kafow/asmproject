@@ -1,12 +1,13 @@
 .const
 DINO_Y_ONSCREEN = 294
 DINO_X_ONSCREEN = 40
-DINO_Y_OFST = 8
+DINO_Y_OFST = 4
 STANDING = 0
 JUMPING = 1
 isJump_adr = 28
 SPACE_OFST = 16
 DOWN_OFST = 20
+JUMP_LVL_OFST = 32
 JUMP_POWER = 30
 DEAD = 0
 ALIVE = 1
@@ -22,12 +23,12 @@ Cactus struct
 pos POINT<>
 Cactus ends
 Dmoot struct 
-	pos POINT<> 
-	drc POINT<> 
-	keyboard KEYS<> 
-	isAlive DWORD ALIVE 
-	isJump DWORD STANDING
-	JUMP_LVL DWORD JUMP_POWER
+	pos POINT<> ;0 x /4 y
+	drc POINT<> ; 8- 1/ 12 - 2
+	keyboard KEYS<> ; jump 16 / crouch 20 
+	isAlive DWORD ALIVE  ;24
+	isJump DWORD STANDING ;28
+	JUMP_LVL DWORD JUMP_POWER ;32
 	 
 Dmoot ends
 
