@@ -7,6 +7,7 @@ JUMPING = 1
 isJump_adr = 28
 SPACE_OFST = 16
 DOWN_OFST = 20
+JUMP_POWER = 30
 DEAD = 0
 ALIVE = 1
 .data
@@ -25,7 +26,8 @@ Dmoot struct
 	drc POINT<> 
 	keyboard KEYS<> 
 	isAlive DWORD ALIVE 
-	isJump DWORD STANDING 
+	isJump DWORD STANDING
+	JUMP_LVL DWORD JUMP_POWER
 	 
 Dmoot ends
 

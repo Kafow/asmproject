@@ -1,4 +1,5 @@
 include \masm32\include\masm32rt.inc
+;sound
 include \masm32\include\winmm.inc
 includelib \masm32\lib\winmm.lib 
 .code
@@ -20,6 +21,7 @@ doJump:
 	
 	mov ecx,JUMPING
 	mov [edi+isJump_adr], ecx
+	mov eax, [edi+JUMP_POWER]
 	invoke PlaySound,offset jump_sound,NULL,SND_ASYNC
 
 ret
