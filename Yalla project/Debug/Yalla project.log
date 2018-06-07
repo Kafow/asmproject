@@ -4,6 +4,5 @@
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
   Generating code
   Finished generating code
-drd.lib(drd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'drd.lib(drd.obj)' or at 'C:\Users\Ofek\source\repos\yallaproject - Copy\Debug\vc120.pdb'; linking object as if no debug info
-  Yalla project.vcxproj -> C:\Users\Ofek\source\repos\yallaproject - Copy\Debug\Yalla project.exe
-  Yalla project.vcxproj -> C:\Users\Ofek\source\repos\yallaproject - Copy\Debug\Yalla project.pdb (Partial PDB)
+drd.lib(drd.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'drd.lib(drd.obj)' or at 'C:\Users\Ofek\source\repos\Yalla project\Debug\vc120.pdb'; linking object as if no debug info
+  Yalla project.vcxproj -> C:\Users\Ofek\source\repos\Yalla project\Debug\Yalla project.exe

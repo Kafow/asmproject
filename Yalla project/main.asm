@@ -15,7 +15,7 @@ invoke init
 
 
 loopa:
-invoke Sleep, 5
+
 invoke update
 invoke draw
 

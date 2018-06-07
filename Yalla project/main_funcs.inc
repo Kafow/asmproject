@@ -26,6 +26,15 @@ invoke drd_flip
 ret
 draw endp
 update proc
+;;;;;;;delay the project;;;;;;;;;
+inc count
+mov eax, count 
+invoke modulu, eax, 20
+cmp eax , 0
+je do_func
+ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+do_func:
 inc x
 dec w
 cmp x,1200
@@ -33,7 +42,7 @@ cmp x,1200
 je do_again
 returnoush:
 invoke stop 
-invoke Key_pressed_space, SPACE_OFST
+invoke Key_pressed_space
 invoke jump, offset dinod 
 
 invoke drd_processMessages

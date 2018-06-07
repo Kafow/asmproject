@@ -8,13 +8,15 @@ isJump_adr = 28
 SPACE_OFST = 16
 DOWN_OFST = 20
 JUMP_LVL_OFST = 32
-JUMP_POWER = 30
+JUMP_POWER = 20
+DRCY = 12
 DEAD = 0
 ALIVE = 1
 .data
 h dword 800
 w dword 1200
 x dword 0
+count dword ?
 KEYS struct
 	jump DWORD ?
 	crouch DWORD ?
