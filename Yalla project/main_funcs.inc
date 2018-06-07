@@ -41,9 +41,20 @@ cmp x,1200
 
 je do_again
 returnoush:
+;;;;;;;;;;;check if need to jump;;;;;;;;;
+mov edx, [edi+JUMP_LVL_OFST]
+	mov ebx, 4294967295
+	sub ebx, JUMP_POWER
+	cmp edx, ebx
+	je dontjump
+	jne jumpp
+jumpp:
 invoke stop 
 invoke Key_pressed_space
 invoke jump, offset dinod 
+invoke drd_processMessages
+
+dontjump:
 
 invoke drd_processMessages
 

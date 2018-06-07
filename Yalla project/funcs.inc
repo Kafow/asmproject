@@ -43,10 +43,9 @@ mov edi, adrObj
 	mov eax,1; drop down mf
 	sub [edi+JUMP_LVL_OFST], eax
 	
+	
+	
 dontjump:
-	
-	
-
 ret
 jump endp
 
