@@ -29,7 +29,7 @@ update proc
 ;;;;;;;delay the project;;;;;;;;;
 inc count
 mov eax, count 
-invoke modulu, eax, 20
+invoke modulu, eax, SPEED
 cmp eax , 0
 je do_func
 ret
@@ -42,23 +42,27 @@ cmp x,1200
 je do_again
 returnoush:
 ;;;;;;;;;;;check if need to jump;;;;;;;;;
-mov edx, [edi+JUMP_LVL_OFST]
+	mov edx, [edi+JUMP_LVL_OFST]
 	mov ebx, 4294967295
 	sub ebx, JUMP_POWER
 	cmp edx, ebx
 	je dontjump
 	jne jumpp
 jumpp:
-invoke stop 
-invoke Key_pressed_space
-invoke jump, offset dinod 
-invoke drd_processMessages
 
+invoke Key_pressed_space
+invoke jump, offset dinod
+
+
+
+invoke drd_processMessages
+ret
 dontjump:
 
 invoke drd_processMessages
 
 ret
+
 do_again:
 mov x,0
 mov w,1200

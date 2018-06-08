@@ -108,7 +108,7 @@ drd_imageDelete PROTO pimg:DWORD
 
 ; each second, print the frame-per-second count
 ; append text to filename. if filename is NULL, the default file is c:/temp/drd_fps.txt
-drd_printFps PROTO filename:DWORD
+l PROTO filename:DWORD
 
 ; set the title of the main window to the given null-terminated string
 drd_setWindowTitle PROTO strng:DWORD

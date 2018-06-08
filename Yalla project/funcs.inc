@@ -26,26 +26,42 @@ invoke PlaySound,offset jump_sound,NULL,SND_ASYNC
 mov ecx,JUMPING
 mov [edi+isJump_adr], ecx
 
-
 ret
 Key_pressed_space endp
 
 jump proc adrObj:DWORD
 
-mov edi, adrObj
-	
+	mov edi, adrObj
 	mov ecx, JUMPING
-	cmp [edi+isJump_adr],ecx 
+	cmp [edi+isJump_adr],ecx  
 	jne dontjump
+	xor edx,edx
+	mov eax, JUMP_POWER
+	mov [edi+JUMP_LVL_OFST], eax
+	mov ebx, 2	
+	div ebx 
+	mov ebx, [edi+JUMP_LVL_OFST]
+	cmp eax, ebx
+	jl jumpp
+	jg drop
+	jumpp:
+	mov ecx, 1
+	sub [edi + DINO_Y_OFST], ecx
+	sub [edi+JUMP_LVL_OFST], ecx
+	ret
+	drop:
+	mov ecx, 1
+	add [edi + DINO_Y_OFST], ecx
+	sub [edi+JUMP_LVL_OFST], ecx
+	mov ecx, [edi+JUMP_LVL_OFST]
+	cmp ecx, 0
+	je dontjump
+	ret
 
-	mov eax, [edi+JUMP_LVL_OFST]
-	sub [edi + DINO_Y_OFST], eax ; jump up mf
-	mov eax,1; drop down mf
-	sub [edi+JUMP_LVL_OFST], eax
-	
-	
 	
 dontjump:
+mov ecx, STANDING
+mov [edi+isJump_adr], ecx
 ret
 jump endp
 
