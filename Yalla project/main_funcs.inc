@@ -31,27 +31,29 @@ mov eax, count
 invoke modulu, eax, SPEED
 cmp eax , 0
 je do_func
+mov eax, count
+invoke modulu, eax, Jump_speed
+cmp eax, 0
+je returnoush
 ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 do_func:
+invoke CalculateDistance; not finished, need to fix
 inc x
 dec w
 cmp x,1200
 
 je do_again
 returnoush:
-;;;;;;;;;;;check if need to jump;;;;;;;;;
 
 
 invoke Key_pressed_space
 invoke jump, offset dinod
 
-
-
 invoke drd_processMessages
 ret
 
-ret
+
 
 do_again:
 mov x,0

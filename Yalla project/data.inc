@@ -2,6 +2,7 @@
 DINO_Y_ONSCREEN = 294
 DINO_X_ONSCREEN = 40
 SPEED = 20
+Jump_speed = 10
 DINO_Y_OFST = 4
 STANDING = 0
 JUMPING = 1
@@ -18,6 +19,8 @@ h dword 800
 w dword 1200
 x dword 0
 count dword ?
+JumpCount DWORD ?
+Distance DWORD ?
 KEYS struct
 	jump DWORD ?
 	crouch DWORD ?

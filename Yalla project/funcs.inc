@@ -22,7 +22,7 @@ cmp eax, 0
 jne jumpfunc
 ret
 jumpfunc:
-invoke PlaySound,offset jump_sound,NULL,SND_ASYNC
+invoke PlaySound,offset jump_sound, SND_LOOP, SND_ASYNC
 mov ecx,JUMPING
 mov [edi+isJump_adr], ecx
 
@@ -54,6 +54,7 @@ jump proc adrObj:DWORD
 	mov ecx, 1
 	add [edi + DINO_Y_OFST], ecx
 	sub [edi+JUMP_LVL_OFST], ecx
+	
 	mov ecx, [edi+JUMP_LVL_OFST]
 	cmp ecx, 0
 	je dontjump
@@ -65,8 +66,11 @@ mov ecx, STANDING
 mov [edi+isJump_adr], ecx
 ret
 reset:
+mov ecx, 2
+add [edi + DINO_Y_OFST], ecx
 mov eax, JUMP_POWER
 mov [edi+JUMP_LVL_OFST],eax
+
 ret
 jump endp
 
@@ -77,4 +81,22 @@ div sec
 mov eax,edx ; eax contains the value of x%y
 ret
 modulu endp
+CalculateDistance proc
+xor edx,edx
+mov eax,1000
+mov ebx, 60
+div ebx
+mov ebx, SPEED
+mov ecx, count
+imul ebx, ecx
+xchg ebx,eax
+xor edx,edx
+div ebx
+mov ebx, 10000
+xchg eax,ebx
+div ebx
+add Distance, eax
+ret
+CalculateDistance endp
+
 
