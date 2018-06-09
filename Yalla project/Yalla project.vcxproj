@@ -129,6 +129,7 @@
   <ItemGroup>
     <None Include="data.inc" />
     <None Include="drd.inc" />
+    <None Include="Little_funcs.inc" />
     <None Include="main_funcs.inc">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </None>

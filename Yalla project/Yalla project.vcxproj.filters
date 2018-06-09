@@ -32,5 +32,8 @@
     <None Include="drd.inc">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Little_funcs.inc">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

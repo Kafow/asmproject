@@ -74,13 +74,7 @@ mov [edi+JUMP_LVL_OFST],eax
 ret
 jump endp
 
-modulu proc first:DWORD, sec:DWORD ; returns x%y
-xor edx, edx
-mov eax,first
-div sec
-mov eax,edx ; eax contains the value of x%y
-ret
-modulu endp
+
 CalculateDistance proc
 xor edx,edx
 mov eax,1000
