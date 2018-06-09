@@ -7,7 +7,8 @@ include main_funcs.inc
 include \masm32\include\winmm.inc
 includelib \masm32\lib\winmm.lib 
 .code
- ; TODO: finish jump, add cactus, maybe add score, replace sleep with count
+ ; TODO: finish jump(V), add cactus, maybe add score, replace sleep with count(V), 
+ ; Do a sperate count for dino and the rest, findout why sound is in delay
 main proc
 invoke init
 

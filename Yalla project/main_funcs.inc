@@ -1,6 +1,5 @@
 ;drd funcs
-include drd.inc
-includelib drd.lib
+
 include funcs.inc
 
 
@@ -42,13 +41,7 @@ cmp x,1200
 je do_again
 returnoush:
 ;;;;;;;;;;;check if need to jump;;;;;;;;;
-	mov edx, [edi+JUMP_LVL_OFST]
-	mov ebx, 4294967295
-	sub ebx, JUMP_POWER
-	cmp edx, ebx
-	je dontjump
-	jne jumpp
-jumpp:
+
 
 invoke Key_pressed_space
 invoke jump, offset dinod
@@ -57,9 +50,6 @@ invoke jump, offset dinod
 
 invoke drd_processMessages
 ret
-dontjump:
-
-invoke drd_processMessages
 
 ret
 

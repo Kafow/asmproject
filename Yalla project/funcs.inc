@@ -30,14 +30,15 @@ ret
 Key_pressed_space endp
 
 jump proc adrObj:DWORD
-
 	mov edi, adrObj
 	mov ecx, JUMPING
 	cmp [edi+isJump_adr],ecx  
 	jne dontjump
 	xor edx,edx
 	mov eax, JUMP_POWER
-	mov [edi+JUMP_LVL_OFST], eax
+	mov ebx, [edi+JUMP_LVL_OFST]
+	cmp ebx, 0
+	je reset
 	mov ebx, 2	
 	div ebx 
 	mov ebx, [edi+JUMP_LVL_OFST]
@@ -62,6 +63,10 @@ jump proc adrObj:DWORD
 dontjump:
 mov ecx, STANDING
 mov [edi+isJump_adr], ecx
+ret
+reset:
+mov eax, JUMP_POWER
+mov [edi+JUMP_LVL_OFST],eax
 ret
 jump endp
 
