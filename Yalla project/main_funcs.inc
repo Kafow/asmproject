@@ -29,7 +29,7 @@ draw proc
 invoke drd_pixelsClear ,0
 invoke drd_imageDrawCrop, offset res.background ,0,0,x,0,w,h
 invoke drd_imageDrawCrop, offset res.background ,w,0,0,0,x,h
-
+;invoke drd_imageDraw, offset res.cactus, 250,450
 ;invoke drd_imageDraw,offset res.background, 0, 0
 ;invoke drd_imageDraw,offset res.dino, dinod.pos.x, dinod.pos.y
 invoke DinoDraw

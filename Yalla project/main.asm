@@ -9,7 +9,7 @@ includelib \masm32\lib\winmm.lib
 .code
  ; TODO: finish jump(V), add cactus, maybe add score, replace sleep with count(V), 
  ; Do a sperate count for dino and the rest (v), Do a func that would draw the cactus in random
- ; paces and cactus x Would go with speed game
+ ; paces and cactus x Would go with speed game (Can do a func that will set cactus pos and put it on update)
 main proc
 invoke init
 loopa:

@@ -1,8 +1,8 @@
 .const
 DINO_Y_ONSCREEN = 294
 DINO_X_ONSCREEN = 40
-SPEED = 20
-Jump_speed = 8
+SPEED = 2
+Jump_speed = 2 ;;should be 2 over laptop, 8 on desktop
 DINO_X_OFST = 0
 DINO_Y_OFST = 4
 dinoRad_OFST = 44
