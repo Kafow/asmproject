@@ -93,4 +93,12 @@ add Distance, eax
 ret
 CalculateDistance endp
 
+setCactusPos proc adrObj:DWORD
+mov eax, adrObj
+mov ebx, -1
+mov [eax + Cactus_X_OFST], ebx
+
+ret
+setCactusPos endp
+
 

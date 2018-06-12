@@ -72,4 +72,4 @@ background db "pics\background.png",0
 cactus1 db "pics\cactus1.png",0
 
 dinod Dmoot<<DINO_X_ONSCREEN,DINO_Y_ONSCREEN>,<1,0>,<VK_SPACE,VK_DOWN>, <>>
-michsol Cactus <<>, <>>
+michsol Cactus <<1200 - dinoRad,DINO_Y_ONSCREEN >, <>>
