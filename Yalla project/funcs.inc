@@ -7,7 +7,6 @@ stop proc
 	mov ebx, offset dinod
 	pusha
 	xor eax,eax
-	
 	mov [ebx+DRCY],eax
 	popa
 
