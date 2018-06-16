@@ -1,3 +1,4 @@
+.686
 .code 
 modulu proc first:DWORD, sec:DWORD ; returns x%y
 xor edx, edx
@@ -52,3 +53,53 @@ add ecx, ebx
 mov [eax + CactusCenter_Y_OFST], ecx
 ret
 calcCenterCactus endp
+
+Random proc max:dword;return a random number in eax between 0 and max
+    Rdrand eax
+    Xor edx,edx
+    div max
+    mov eax,edx
+    ret 
+Random endp
+
+setCactusPos proc adrObj:DWORD
+mov eax, count 
+invoke modulu, eax, SPEED
+cmp eax , 0
+je do_funcc
+ret
+do_funcc:
+mov eax, adrObj
+mov ebx, 1
+
+sub [eax + Cactus_X_OFST], ebx
+mov ecx,[eax + Cactus_X_OFST]
+cmp ecx, 0
+je NotONScreen
+ret
+NotONScreen:
+mov ebx, 0
+mov [eax + 20 ], ebx
+mov ebx, 1200-dinoRad
+mov [eax + Cactus_X_OFST], ebx
+ret
+setCactusPos endp
+
+IsDrawCactus proc 
+
+
+invoke Random, 500
+invoke modulu, eax, 43
+cmp eax, 0
+je tell_to_active
+ret
+tell_to_active:
+mov eax, 1
+mov CactusDraw, eax
+
+ret
+IsDrawCactus endp
+
+collision proc
+ret
+collision endp

@@ -2,6 +2,8 @@ include \masm32\include\masm32rt.inc
 ;sound
 include \masm32\include\winmm.inc
 includelib \masm32\lib\winmm.lib 
+
+
 .code
 stop proc
 	mov ebx, offset dinod
@@ -12,6 +14,7 @@ stop proc
 
 ret
 stop endp
+
 
 Key_pressed_space proc 
 mov ebx, edi
@@ -29,6 +32,7 @@ ret
 Key_pressed_space endp
 
 jump proc adrObj:DWORD
+	
 	mov edi, adrObj
 	mov ecx, JUMPING
 	cmp [edi+isJump_adr],ecx  
@@ -45,12 +49,12 @@ jump proc adrObj:DWORD
 	jl jumpp
 	jg drop
 	jumpp:
-	mov ecx, 1
+	
 	sub [edi + DINO_Y_OFST], ecx
 	sub [edi+JUMP_LVL_OFST], ecx
 	ret
 	drop:
-	mov ecx, 1
+	
 	add [edi + DINO_Y_OFST], ecx
 	sub [edi+JUMP_LVL_OFST], ecx
 	
@@ -65,6 +69,7 @@ mov ecx, STANDING
 mov [edi+isJump_adr], ecx
 ret
 reset:
+
 mov ecx, 2
 add [edi + DINO_Y_OFST], ecx
 mov eax, JUMP_POWER
@@ -72,7 +77,6 @@ mov [edi+JUMP_LVL_OFST],eax
 
 ret
 jump endp
-
 
 CalculateDistance proc
 xor edx,edx
@@ -92,12 +96,9 @@ add Distance, eax
 ret
 CalculateDistance endp
 
-setCactusPos proc adrObj:DWORD
-mov eax, adrObj
-mov ebx, -1
-mov [eax + Cactus_X_OFST], ebx
 
-ret
-setCactusPos endp
+
+
+
 
 
