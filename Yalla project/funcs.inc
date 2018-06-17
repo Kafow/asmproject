@@ -1,4 +1,3 @@
-include \masm32\include\masm32rt.inc
 ;sound
 include \masm32\include\winmm.inc
 includelib \masm32\lib\winmm.lib 

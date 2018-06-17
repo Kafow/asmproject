@@ -100,6 +100,34 @@ mov CactusDraw, eax
 ret
 IsDrawCactus endp
 
-collision proc
+collision proc adrObj:dword,cacOfst:dword ;pashot math distance formula without the shoresh 
+	mov eax,adrObj
+	mov ebx,cacOfst
+	mov ecx, [eax+dinoCenter_X_OFST]
+	sub ecx,[ebx+CactusCenter_X_OFST]
+	imul ecx,ecx
+	
+	mov esi, [eax+dinoCenter_Y_OFST]
+	sub esi,[ebx+CactusCenter_Y_OFST]
+	imul esi,esi
+
+	add ecx,esi
+	
+	mov esi,[eax+dinoRad_OFST]
+	add esi,[ebx+CactusRad_OFST]
+	imul esi,esi
+
+	cmp ecx,esi
+	jle COLLISIONMADAFAKA
+
+ret
+
+
+COLLISIONMADAFAKA:
+;we do Circle sex
+mov ebx, DEAD
+mov [eax+ 24], ebx
+
+
 ret
 collision endp

@@ -1,8 +1,8 @@
 .const
 DINO_Y_ONSCREEN = 294
 DINO_X_ONSCREEN = 40
-SPEED = 10
-Jump_speed = 15 ;;should be 2 over laptop, 8 on desktop
+SPEED = 3
+Jump_speed = 4 ;;should be 2 over laptop, 8 on desktop
 DINO_X_OFST = 0
 DINO_Y_OFST = 4
 dinoRad_OFST = 44
@@ -63,6 +63,8 @@ Images struct
 	dinoDOWN Img<>
 	background Img<>
 	cactus Img<>
+	dinof Img<>
+	gameover Img<>
 Images ends
 res Images<>
 
@@ -74,6 +76,8 @@ dinoUP db "pics\leg_up.png",0
 dinoDOWN db "pics\leg_down.png",0
 background db "pics\background.png",0
 cactus1 db "pics\cactus1.png",0
+dinof db "pics\dinof.png", 0
+gameover db "pics\gameover.png",0
 
 dinod Dmoot<<DINO_X_ONSCREEN,DINO_Y_ONSCREEN>,<1,0>,<VK_SPACE,VK_DOWN>, <>>
 michsol Cactus <<1200 - dinoRad,DINO_Y_ONSCREEN >, <>>

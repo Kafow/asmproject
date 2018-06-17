@@ -11,14 +11,19 @@ includelib \masm32\lib\winmm.lib
 init proc
 invoke drd_init,1200,800,0
 invoke drd_imageLoadFile,offset dino, offset res.dino
+invoke drd_imageLoadFile,offset dinof, offset res.dinof
 invoke drd_imageLoadFile,offset dinoUP, offset res.dinoUP
 invoke drd_imageLoadFile,offset dinoDOWN, offset res.dinoDOWN
 invoke drd_imageLoadFile,offset background, offset res.background
 invoke drd_imageLoadFile,offset cactus1, offset res.cactus
+invoke drd_imageLoadFile,offset gameover, offset res.gameover
 invoke drd_imageSetTransparent, offset res.cactus, 0ffffffh
 invoke drd_imageSetTransparent, offset res.dino, 0ffffffh
+invoke drd_imageSetTransparent, offset res.dinof, 00000000h
 invoke drd_imageSetTransparent, offset res.dinoDOWN, 0ffffffh
 invoke drd_imageSetTransparent, offset res.dinoUP, 0ffffffh
+invoke drd_imageSetTransparent, offset res.gameover, 0ffffffh
+
 
 
 ret
@@ -26,6 +31,9 @@ init endp
 
 
 draw proc
+mov eax, dinod.isAlive
+cmp eax, 0
+je col
 invoke drd_pixelsClear ,0
 invoke drd_imageDrawCrop, offset res.background ,0,0,x,0,w,h
 invoke drd_imageDrawCrop, offset res.background ,w,0,0,0,x,h
@@ -42,9 +50,7 @@ cmp ecx, 0
 je Draw1
 jne Draw2
 
-flip:
-invoke drd_flip
-ret
+
 
 Draw1:
 
@@ -59,10 +65,25 @@ drawnet:
 invoke drd_imageDraw,offset res.dino, dinod.pos.x, dinod.pos.y
 jmp flip
 
+flip:
+invoke drd_flip
+
+
+ret
+col:
+invoke drd_imageDelete, offset res.dinoUP
+invoke drd_imageDelete, offset res.dinoDOWN
+invoke drd_imageDraw, offset res.gameover, 400, 200
+invoke drd_imageDraw, offset res.dinof, dinod.pos.x, dinod.pos.y
+invoke drd_flip
+ret
 draw endp
 
 
 update proc
+mov eax, dinod.isAlive
+cmp eax, 0
+je coll
 ;;;;;;;delay the project;;;;;;;;;
 inc count
 mov eax, count 
@@ -88,9 +109,11 @@ returnoush:
 
 
 invoke calcCenterDino
+invoke calcCenterCactus ,offset michsol
 invoke setCactusPos, offset michsol
 invoke Key_pressed_space
 invoke jump, offset dinod
+invoke collision, offset dinod,offset michsol
 
 invoke drd_processMessages
 ret
@@ -101,5 +124,8 @@ do_again:
 mov x,0 
 mov w,1200
 jmp returnoush
+coll:
+invoke drd_processMessages
+ret
 
 update endp
