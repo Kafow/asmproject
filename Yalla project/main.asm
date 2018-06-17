@@ -15,7 +15,7 @@ main proc
 invoke init
 loopa:
 
-
+invoke restart, offset dinod
 invoke update
 invoke draw
 

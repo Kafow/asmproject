@@ -23,7 +23,6 @@ cmp eax, 0
 jne jumpfunc
 ret
 jumpfunc:
-invoke PlaySound,offset jump_sound, SND_LOOP, SND_ASYNC
 mov ecx,JUMPING
 mov [edi+isJump_adr], ecx
 

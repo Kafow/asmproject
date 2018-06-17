@@ -125,9 +125,34 @@ ret
 
 COLLISIONMADAFAKA:
 ;we do Circle sex
+invoke PlaySound,offset hit, SND_LOOP, SND_ASYNC
 mov ebx, DEAD
+mov eax,adrObj
 mov [eax+ 24], ebx
 
 
 ret
 collision endp
+
+restart proc adrObj:DWORD
+mov ebx, DEAD
+mov ecx, adrObj
+cmp [ecx+ 24], ebx
+je checkifrestart
+ret
+checkifrestart:
+
+invoke GetAsyncKeyState, VK_SPACE
+cmp eax, 0
+
+jne restartt
+ret
+restartt:
+mov ecx, adrObj
+mov ebx, ALIVE
+mov [ecx+ 24], ebx
+mov ebx, 1200 - dinoRad
+mov michsol.pos.x, ebx
+
+ret
+restart endp

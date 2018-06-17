@@ -17,12 +17,14 @@ invoke drd_imageLoadFile,offset dinoDOWN, offset res.dinoDOWN
 invoke drd_imageLoadFile,offset background, offset res.background
 invoke drd_imageLoadFile,offset cactus1, offset res.cactus
 invoke drd_imageLoadFile,offset gameover, offset res.gameover
+invoke drd_imageLoadFile,offset restarttt, offset res.restarttt
 invoke drd_imageSetTransparent, offset res.cactus, 0ffffffh
 invoke drd_imageSetTransparent, offset res.dino, 0ffffffh
 invoke drd_imageSetTransparent, offset res.dinof, 00000000h
 invoke drd_imageSetTransparent, offset res.dinoDOWN, 0ffffffh
 invoke drd_imageSetTransparent, offset res.dinoUP, 0ffffffh
 invoke drd_imageSetTransparent, offset res.gameover, 0ffffffh
+invoke drd_imageSetTransparent, offset res.restarttt, 0ffffffh
 
 
 
@@ -71,9 +73,10 @@ invoke drd_flip
 
 ret
 col:
-invoke drd_imageDelete, offset res.dinoUP
-invoke drd_imageDelete, offset res.dinoDOWN
+;invoke drd_imageDelete, offset res.dinoUP
+;invoke drd_imageDelete, offset res.dinoDOWN
 invoke drd_imageDraw, offset res.gameover, 400, 200
+invoke drd_imageDraw, offset res.restarttt, 551, 280
 invoke drd_imageDraw, offset res.dinof, dinod.pos.x, dinod.pos.y
 invoke drd_flip
 ret
