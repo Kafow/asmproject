@@ -7,7 +7,8 @@ div sec
 mov eax,edx ; eax contains the value of x%y
 ret
 modulu endp
-DinoDraw proc
+
+DinoDraw proc ;change the dino draw that need 
 inc DinoDraww
 mov eax, DinoDraww
 mov ebx, 25
@@ -30,7 +31,7 @@ ChangeToOne:
 mov DinoDrawC, ebx
 ret
 DinoDraw endp
-calcCenterDino proc
+calcCenterDino proc ;calculate the center of the dino 
 mov eax, offset dinod
 mov ebx, [eax + dinoRad_OFST]
 mov ecx, [eax + DINO_X_OFST]
@@ -42,7 +43,7 @@ mov [eax + dinoCenter_Y_OFST], ecx
 ret
 calcCenterDino endp
 
-calcCenterCactus proc adrObj:DWORD
+calcCenterCactus proc adrObj:DWORD ; calculate the center of the cactus
 mov eax, adrObj
 mov ebx, [eax + CactusRad_OFST]
 mov ecx, [eax + Cactus_X_OFST]
@@ -62,7 +63,7 @@ Random proc max:dword;return a random number in eax between 0 and max
     ret 
 Random endp
 
-setCactusPos proc adrObj:DWORD
+setCactusPos proc adrObj:DWORD ;sets the cactus postion 
 mov eax, count 
 invoke modulu, eax, SPEED
 cmp eax , 0
@@ -85,7 +86,7 @@ mov [eax + Cactus_X_OFST], ebx
 ret
 setCactusPos endp
 
-IsDrawCactus proc 
+IsDrawCactus proc ;tells if there cactus on screen
 
 
 invoke Random, 500
@@ -134,7 +135,7 @@ mov [eax+ 24], ebx
 ret
 collision endp
 
-restart proc adrObj:DWORD
+restart proc adrObj:DWORD ; restarts the values and game
 mov ebx, DEAD
 mov ecx, adrObj
 cmp [ecx+ 24], ebx

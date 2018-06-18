@@ -8,7 +8,7 @@ include Little_funcs.inc
 include \masm32\include\winmm.inc
 includelib \masm32\lib\winmm.lib 
 .code 
-init proc
+init proc ;openning the window and loading the files
 invoke drd_init,1200,800,0
 invoke drd_imageLoadFile,offset dino, offset res.dino
 invoke drd_imageLoadFile,offset dinof, offset res.dinof
@@ -32,7 +32,7 @@ ret
 init endp
 
 
-draw proc
+draw proc ;drawing the things based on the game situation
 mov eax, dinod.isAlive
 cmp eax, 0
 je col
@@ -83,7 +83,7 @@ ret
 draw endp
 
 
-update proc
+update proc ;updating the game funcs in loop and delay the project
 mov eax, dinod.isAlive
 cmp eax, 0
 je coll

@@ -46,7 +46,7 @@ center POINT<> ;8 x/ 12 y
 RAD DWORD dinoRad ; 16
 IsScreen DWORD 0;20
 Cactus ends
-Dmoot struct 
+Character struct 
 	pos POINT<> ;0 x /4 y
 	drc POINT<> ; 8- 1/ 12 - 2
 	keyboard KEYS<> ; jump 16 / crouch 20 
@@ -55,7 +55,7 @@ Dmoot struct
 	JUMP_LVL DWORD JUMP_POWER ;32
 	center POINT<>; 36 x / 40 y
 	RAD DWORD dinoRad; 44
-Dmoot ends
+Character ends
 
 Images struct
 	dino Img<>
@@ -81,6 +81,6 @@ dinof db "pics\dinof.png", 0
 gameover db "pics\gameover.png",0
 restarttt db "pics\restart.png", 0
 
-dinod Dmoot<<DINO_X_ONSCREEN,DINO_Y_ONSCREEN>,<1,0>,<VK_SPACE,VK_DOWN>, <>>
+dinod Character<<DINO_X_ONSCREEN,DINO_Y_ONSCREEN>,<1,0>,<VK_SPACE,VK_DOWN>, <>>
 michsol Cactus <<1200 - dinoRad,DINO_Y_ONSCREEN >, <>>
 michsol2 Cactus <<1200, DINO_Y_ONSCREEN>, <>>

@@ -4,18 +4,8 @@ includelib \masm32\lib\winmm.lib
 
 
 .code
-stop proc
-	mov ebx, offset dinod
-	pusha
-	xor eax,eax
-	mov [ebx+DRCY],eax
-	popa
 
-ret
-stop endp
-
-
-Key_pressed_space proc 
+Key_pressed_space proc ;func that check if the space is pressed and active jump if it is
 mov ebx, edi
 add ebx, SPACE_OFST
 invoke GetAsyncKeyState,[ebx] ;throw to eax 1 if key pressed
@@ -29,7 +19,7 @@ mov [edi+isJump_adr], ecx
 ret
 Key_pressed_space endp
 
-jump proc adrObj:DWORD
+jump proc adrObj:DWORD ;func that do the jump
 	
 	mov edi, adrObj
 	mov ecx, JUMPING
@@ -76,7 +66,7 @@ mov [edi+JUMP_LVL_OFST],eax
 ret
 jump endp
 
-CalculateDistance proc
+CalculateDistance proc ;supposed to calculate distance, not working atm
 xor edx,edx
 mov eax,1000
 mov ebx, 60
