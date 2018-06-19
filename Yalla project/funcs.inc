@@ -66,23 +66,8 @@ mov [edi+JUMP_LVL_OFST],eax
 ret
 jump endp
 
-CalculateDistance proc ;supposed to calculate distance, not working atm
-xor edx,edx
-mov eax,1000
-mov ebx, 60
-div ebx
-mov ebx, SPEED
-mov ecx, count
-imul ebx, ecx
-xchg ebx,eax
-xor edx,edx
-div ebx
-mov ebx, 10000
-xchg eax,ebx
-div ebx
-add Distance, eax
-ret
-CalculateDistance endp
+
+
 
 
 

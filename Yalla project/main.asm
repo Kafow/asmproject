@@ -11,11 +11,9 @@ includelib \masm32\lib\winmm.lib
 main proc
 invoke init ;openning the window and loading the images
 loopa:
-
 invoke restart, offset dinod ;check if need to restart
 invoke update ;update the loop and the funcs
 invoke draw ;drawing the game
-
 jmp loopa
 ret
 main endp

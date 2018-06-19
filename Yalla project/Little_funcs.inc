@@ -88,7 +88,6 @@ setCactusPos endp
 
 IsDrawCactus proc ;tells if there cactus on screen
 
-
 invoke Random, 500
 invoke modulu, eax, 43
 cmp eax, 0
@@ -123,37 +122,24 @@ collision proc adrObj:dword,cacOfst:dword ;pashot math distance formula without 
 
 ret
 
-
 COLLISIONMADAFAKA:
 ;we do Circle sex
 invoke PlaySound,offset hit, SND_LOOP, SND_ASYNC
 mov ebx, DEAD
 mov eax,adrObj
 mov [eax+ 24], ebx
-
-
 ret
 collision endp
 
-restart proc adrObj:DWORD ; restarts the values and game
-mov ebx, DEAD
-mov ecx, adrObj
-cmp [ecx+ 24], ebx
-je checkifrestart
-ret
-checkifrestart:
 
-invoke GetAsyncKeyState, VK_SPACE
-cmp eax, 0
-
-jne restartt
+CalculateDistance proc
+xor edx,edx
+inc DistanceCount
+invoke modulu, DistanceCount, 10
+cmp eax,0
+je incCount
 ret
-restartt:
-mov ecx, adrObj
-mov ebx, ALIVE
-mov [ecx+ 24], ebx
-mov ebx, 1200 - dinoRad
-mov michsol.pos.x, ebx
-
+incCount:
+inc Distance
 ret
-restart endp
+CalculateDistance2 endp

@@ -117,7 +117,8 @@ invoke setCactusPos, offset michsol
 invoke Key_pressed_space
 invoke jump, offset dinod
 invoke collision, offset dinod,offset michsol
-
+invoke CalculateDistance2
+invoke drd_setWindowTitle, offset distance
 invoke drd_processMessages
 ret
 
@@ -132,3 +133,26 @@ invoke drd_processMessages
 ret
 
 update endp
+
+restart proc adrObj:DWORD ; restarts the values and game
+mov ebx, DEAD
+mov ecx, adrObj
+cmp [ecx+ 24], ebx
+je checkifrestart
+ret
+checkifrestart:
+
+invoke GetAsyncKeyState, VK_SPACE
+cmp eax, 0
+
+jne restartt
+ret
+restartt:
+mov ecx, adrObj
+mov ebx, ALIVE
+mov [ecx+ 24], ebx
+mov ebx, 1200 - dinoRad
+mov michsol.pos.x, ebx
+
+ret
+restart endp

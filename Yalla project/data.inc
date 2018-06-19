@@ -1,8 +1,8 @@
 .const
 DINO_Y_ONSCREEN = 294
 DINO_X_ONSCREEN = 40
-SPEED = 12 ;3 on laptop, 12 desktop
-Jump_speed = 16 ;; 4 on laptop, 16 desktop
+SPEED = 2 ;3 on laptop, 12 desktop
+Jump_speed = 3 ;; 4 on laptop, 16 desktop
 DINO_X_OFST = 0
 DINO_Y_OFST = 4
 dinoRad_OFST = 44
@@ -32,7 +32,8 @@ x dword 0
 
 count dword ?
 JumpCount DWORD ?
-Distance DWORD ?
+Distance DWORD 0
+DistanceCount DWORD 0
 DinoDraww DWORD 0
 DinoDrawC DWORD 0 ;0 for false, 1 for true
 CactusDraw DWORD 0 ; 0 for false, 1 for true
@@ -80,6 +81,7 @@ cactus1 db "pics\cactus1.png",0
 dinof db "pics\dinof.png", 0
 gameover db "pics\gameover.png",0
 restarttt db "pics\restart.png", 0
+distance db "0", 0
 
 dinod Character<<DINO_X_ONSCREEN,DINO_Y_ONSCREEN>,<1,0>,<VK_SPACE,VK_DOWN>, <>>
 michsol Cactus <<1200 - dinoRad,DINO_Y_ONSCREEN >, <>>
